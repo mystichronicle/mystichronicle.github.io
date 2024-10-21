@@ -2,4 +2,4 @@
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: https://tensorgenius.github.io/sitemap.xml
+Sitemap: https://opulentloop.github.io/sitemap.xml

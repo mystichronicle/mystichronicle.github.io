@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 response = `
                 <p>Contact Information:</p>
                 <ul>
-                    <li>GitHub: <a href="https://github.com/debjit-mandal" target="_blank">https://github.com/debjit-mandal</a></li>
-                    <li>Facebook: <a href="https://www.facebook.com/tensortrove" target="_blank">https://www.facebook.com/tensortrove</a></li>
-                    <li>LinkedIn: <a href="https://www.linkedin.com/in/tensortrove" target="_blank">https://www.linkedin.com/in/debjit-mandal</a></li>
-                    <li>X: <a href="https://www.x.com/tensortrove" target="_blank">https://www.x.com/imdebjitmandal</a></li>
-                    <li>Fosstodon: <a href="https://fosstodon.org/@tensortrove" target="_blank">https://fosstodon.org/@tensortrove</a></li>
+                    <li>GitHub: <a href="https://github.com/opulentloop" target="_blank">https://github.com/opulentloop</a></li>
+                    <li>Facebook: <a href="https://www.facebook.com/opulentloop" target="_blank">https://www.facebook.com/opulentloop</a></li>
+                    <li>LinkedIn: <a href="https://www.linkedin.com/in/opulentloop" target="_blank">https://www.linkedin.com/in/opulentloop</a></li>
+                    <li>X: <a href="https://www.x.com/opulentloop" target="_blank">https://www.x.com/imdebjitmandal</a></li>
+                    <li>Fosstodon: <a href="https://fosstodon.org/@opulentloop" target="_blank">https://fosstodon.org/@opulentloop</a></li>
                 </ul>
                 `;
                 break;
@@ -57,63 +57,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 <ul>
                     <li>
                     <a
-                        href="https://github.com/debjit-mandal?tab=repositories&q=&language=java" target="_blank"
+                        href="https://github.com/opulentloop?tab=repositories&q=&language=java" target="_blank"
                         >JAVA</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/debjit-mandal?tab=repositories&q=&language=python" target="_blank"
+                        href="https://github.com/opulentloop?tab=repositories&q=&language=python" target="_blank"
                         >Python</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/debjit-mandal?tab=repositories&q=&type=&language=c&sort=" target="_blank"
+                        href="https://github.com/opulentloop?tab=repositories&q=&type=&language=c&sort=" target="_blank"
                         >C</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/debjit-mandal?tab=repositories&q=&type=&language=c%2B%2B&sort=" target="_blank"
+                        href="https://github.com/opulentloop?tab=repositories&q=&type=&language=c%2B%2B&sort=" target="_blank"
                         >C++</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/debjit-mandal?tab=repositories&q=&type=&language=go&sort=" target="_blank"
+                        href="https://github.com/opulentloop?tab=repositories&q=&type=&language=go&sort=" target="_blank"
                         >GoLang</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/debjit-mandal?tab=repositories&q=&type=&language=rust&sort=" target="_blank"
+                        href="https://github.com/opulentloop?tab=repositories&q=&type=&language=rust&sort=" target="_blank"
                         >Rust</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/debjit-mandal?tab=repositories&q=&type=&language=html&sort=" target="_blank"
+                        href="https://github.com/opulentloop?tab=repositories&q=&type=&language=html&sort=" target="_blank"
                         >HTML</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/debjit-mandal?tab=repositories&q=&type=&language=html&sort=" target="_blank"
+                        href="https://github.com/opulentloop?tab=repositories&q=&type=&language=html&sort=" target="_blank"
                         >CSS</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/debjit-mandal?tab=repositories&q=&type=&language=html&sort=" target="_blank"
+                        href="https://github.com/opulentloop?tab=repositories&q=&type=&language=html&sort=" target="_blank"
                         >JavaScript</a
                     >
                     </li>
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'projects':
                 response = `<p>Redirecting to my projects page...</p>`;
                 setTimeout(() => {
-                    window.open('https://debjit-mandal.github.io/gitfolio', '_blank');
+                    window.open('https://opulentloop.github.io/gitfolio', '_blank');
                 }, 1000);
                 break;
             case 'clear':
