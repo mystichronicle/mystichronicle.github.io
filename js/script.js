@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 response = `
                 <p>Contact Information:</p>
                 <ul>
-                    <li>GitHub: <a href="https://github.com/mysticdebjit" target="_blank">https://github.com/mysticdebjit</a></li>
-                    <li>Facebook: <a href="https://www.facebook.com/mysticdebjit" target="_blank">https://www.facebook.com/mysticdebjit</a></li>
-                    <li>LinkedIn: <a href="https://www.linkedin.com/in/mysticdebjit" target="_blank">https://www.linkedin.com/in/mysticdebjit</a></li>
-                    <li>X: <a href="https://www.x.com/mysticdebjit" target="_blank">https://www.x.com/imdebjitmandal</a></li>
-                    <li>Threads: <a href="https://threads.net/@mysticdebjit" target="_blank">https://threads.net/@mysticdebjit</a></li>
+                    <li>GitHub: <a href="https://github.com/mystichronicle" target="_blank">https://github.com/mystichronicle</a></li>
+                    <li>Facebook: <a href="https://www.facebook.com/mystichronicle" target="_blank">https://www.facebook.com/mystichronicle</a></li>
+                    <li>LinkedIn: <a href="https://www.linkedin.com/in/mystichronicle" target="_blank">https://www.linkedin.com/in/mystichronicle</a></li>
+                    <li>X: <a href="https://www.x.com/mystichronicle" target="_blank">https://www.x.com/imdebjitmandal</a></li>
+                    <li>Threads: <a href="https://threads.net/@mystichronicle" target="_blank">https://threads.net/@mystichronicle</a></li>
                 </ul>
                 `;
                 break;
@@ -57,63 +57,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 <ul>
                     <li>
                     <a
-                        href="https://github.com/mysticdebjit?tab=repositories&q=&language=java" target="_blank"
+                        href="https://github.com/mystichronicle?tab=repositories&q=&language=java" target="_blank"
                         >JAVA</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/mysticdebjit?tab=repositories&q=&language=python" target="_blank"
+                        href="https://github.com/mystichronicle?tab=repositories&q=&language=python" target="_blank"
                         >Python</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/mysticdebjit?tab=repositories&q=&type=&language=c&sort=" target="_blank"
+                        href="https://github.com/mystichronicle?tab=repositories&q=&type=&language=c&sort=" target="_blank"
                         >C</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/mysticdebjit?tab=repositories&q=&type=&language=c%2B%2B&sort=" target="_blank"
+                        href="https://github.com/mystichronicle?tab=repositories&q=&type=&language=c%2B%2B&sort=" target="_blank"
                         >C++</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/mysticdebjit?tab=repositories&q=&type=&language=go&sort=" target="_blank"
+                        href="https://github.com/mystichronicle?tab=repositories&q=&type=&language=go&sort=" target="_blank"
                         >GoLang</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/mysticdebjit?tab=repositories&q=&type=&language=rust&sort=" target="_blank"
+                        href="https://github.com/mystichronicle?tab=repositories&q=&type=&language=rust&sort=" target="_blank"
                         >Rust</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/mysticdebjit?tab=repositories&q=&type=&language=html&sort=" target="_blank"
+                        href="https://github.com/mystichronicle?tab=repositories&q=&type=&language=html&sort=" target="_blank"
                         >HTML</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/mysticdebjit?tab=repositories&q=&type=&language=html&sort=" target="_blank"
+                        href="https://github.com/mystichronicle?tab=repositories&q=&type=&language=html&sort=" target="_blank"
                         >CSS</a
                     >
                     </li>
                 
                     <li>
                     <a
-                        href="https://github.com/mysticdebjit?tab=repositories&q=&type=&language=html&sort=" target="_blank"
+                        href="https://github.com/mystichronicle?tab=repositories&q=&type=&language=html&sort=" target="_blank"
                         >JavaScript</a
                     >
                     </li>
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'projects':
                 response = `<p>Redirecting to my projects page...</p>`;
                 setTimeout(() => {
-                    window.open('https://mysticdebjit.github.io/gitfolio', '_blank');
+                    window.open('https://mystichronicle.github.io/gitfolio', '_blank');
                 }, 1000);
                 break;
             case 'clear':

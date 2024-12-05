@@ -1,4 +1,4 @@
-# mysticdebjit.github.io
+# mystichronicle.github.io
 This is my GitHub Page. 
 
 An interactive `cli` that allows you to learn about me by navigating around a terminal emulator.
