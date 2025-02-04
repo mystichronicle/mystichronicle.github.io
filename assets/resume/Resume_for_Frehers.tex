@@ -17,6 +17,10 @@
 \usepackage{tabularx}
 \usepackage{ragged2e}
 \usepackage[colorlinks=true, urlcolor=blue, linkcolor=red]{hyperref}
+\hypersetup{pdfnewwindow=true} % Open links in a new tab
+\usepackage{setspace} 
+\setstretch{0.85}  % Adjust line spacing (default is 1.0)
+
 \newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 % \name{debjit mandal} % Your name
@@ -27,32 +31,33 @@
 \begin{document}
 \begin{center}
 {\Huge \bf DEBJIT MANDAL}\\ % Name in full capital letters and larger size
-\vspace{0.2cm} % Maintain reduced vertical space between name and links
+\vspace{-2pt} % Maintain reduced vertical space between name and links
 \begin{tabular}{ c c }
  \\ \faEnvelopeO\enspace debjitmandal8925@gmail.com & \faMobile\enspace (+91) 8335024039\\  
 \end{tabular}
-\vspace{0.1cm} % Slight reduction in space between the two rows
+\vspace{-0.5pt} % Slight reduction in space between the two rows
 \begin{tabular}{ c c c }
  \faGlobe\enspace \href{https://debjit.is-a.dev}{debjit.is-a.dev} & \faGithub\enspace \href{https://github.com/mystichronicle}{mystichronicle} & \faLinkedin\enspace \href{https://linkedin.com/in/mystichronicle}{mystichronicle}\\  
 \end{tabular}
 \end{center}
 
+
 %----------------------------------------------------------------------------------------
 %	EDUCATION SECTION
 %----------------------------------------------------------------------------------------
-
-\begin{rSection}{Education}
+\begin{rSection}{Education} 
 {\bf Kalinga Institute of Industrial Technology, Bhubaneswar, Odisha} \hfill {\em 2022 - 2026} 
 \\ B.Tech, Computer Science and Engineering \hfill {CGPA: 9.13/10}
 
 \end{rSection}
+
 %----------------------------------------------------------------------------------------
 %	EXPERIENCE SECTION
 %----------------------------------------------------------------------------------------
 \begin{rSection}{Experience}
 %--copy and paste this region  if you need more--
-\href{https://1drv.ms/i/s!AqmF3ryI8xyngdlvi5puoHlWRF5NTQ?e=hyfCRH}{{\bf CAMPUS AMBASSADOR}{, IMUNA}} \hfill {\em JULY, 2023- AUGUST, 2023}
-\begin{itemize}
+\href{https://1drv.ms/i/s!AqmF3ryI8xyngdlvi5puoHlWRF5NTQ?e=hyfCRH}{{\bf CAMPUS AMBASSADOR}{, IMUNA}} \hfill {\em JULY, 2023- AUGUST, 2023}\vspace{-3pt}
+\begin{itemize}\setlength{\itemsep}{-6pt}
     \item Promoted IMUN Online Conferences in different schools/universities and got 10+ registrations.
     \item Best Intern for a week.
 \end{itemize}
@@ -62,42 +67,42 @@
 %    PROJECTS
 %-----------------------------------------------------------------------------------------------
 \begin{rSection}{Projects}
-
-\begin{itemize}  
-    \item{\href{https://github.com/mystichronicle/Brain-Tumor-Detection}{{\bf Neural Network-Based Brain Tumor Detection System:}} 
-    A project that leverages deep learning techniques to automate the detection of brain tumors from MRI images.
-    \begin{itemize}
-        \item Utilized Convolutional Neural Networks (CNN) for image classification.
-        \item Deployed the model using TensorFlow for real-time analysis.
+\begin{itemize}\setlength{\itemsep}{-2pt}
+    \item{\href{https://github.com/mystichronicle/NeuroSeg}{{\bf NeuroSeg:}} 
+    A Deep Learning-based Brain Tumor Segmentation System.\vspace{-2pt} 
+    \begin{itemize}\setlength{\itemsep}{-2pt}
+        \item Designed and trained a UNet-based deep learning model for automatic brain tumor segmentation from MRI images.
+        \item Developed a full-stack web application using Flask (backend) and HTML/CSS/JS (frontend) for real-time tumor detection.
+    \end{itemize}}
+    
+    \item{\href{https://github.com/mystichronicle/ECGShield}{{\bf ECGShield:}} 
+    An interactive Streamlit-based system for ECG noise removal using advanced filtering techniques.\vspace{-2pt} 
+    \begin{itemize}\setlength{\itemsep}{-2pt}
+        \item Implemented various signal filtering techniques including Notch Filter, High-Pass, Low-Pass, and Wavelet Denoising.
+        \item Designed a user-friendly Streamlit interface to upload ECG files, visualize signals, and download the cleaned output.
     \end{itemize}}
 
-    \item{\href{https://github.com/mystichronicle/cifar10-resnet-classification}{{\bf CIFAR-10 ResNet Classification:}} 
-    A project which focuses on classifying images from the CIFAR-10 dataset using a Residual Network (ResNet) architecture.
-    \begin{itemize}
-        \item Designed and trained a deep Residual Network (ResNet) model for image classification.
-        \item Implemented data augmentation techniques to enhance model robustness.
+    \item{\href{https://github.com/mystichronicle/MoodMelody}{{\bf MoodMelody:}} 
+    A Real-time emotion detection and content recommendation system.\vspace{-2pt} 
+    \begin{itemize}\setlength{\itemsep}{-2pt}
+        \item Implemented emotion recognition using TensorFlow/Keras.
+        \item Integrated Spotify API for personalized music recommendations.
     \end{itemize}}
     
        \item {\href{https://github.com/mystichronicle/dsh}{{\bf DSH:}}
-    Command-Line shell made using C++.
-    \begin{itemize}
+    A Command-Line shell made using C++.\vspace{-2pt} 
+    \begin{itemize}\setlength{\itemsep}{-2pt}
         \item Implemented custom command parsing for user-defined commands.
         \item Handled concurrency with multithreading for running background processes.
     \end{itemize}}
     
     \item{\href{https://github.com/mystichronicle/TrafficVisionAI}{{\bf TrafficVisionAI:}} 
-    Real-Time Traffic Sign Recognition and Driver Assistance using AI.
-    \begin{itemize}
+    A Real-Time Traffic Sign Recognition and Driver Assistance using AI.\vspace{-2pt} 
+    \begin{itemize}\setlength{\itemsep}{-2pt}
         \item Integrated traffic sign recognition using TensorFlow and OpenCV.
         \item Developed lane detection and collision warning systems.
     \end{itemize}}
     
-    \item{\href{https://github.com/mystichronicle/MoodMelody}{{\bf MoodMelody:}} 
-    Real-time emotion detection and content recommendation system.
-    \begin{itemize}
-        \item Implemented emotion recognition using TensorFlow/Keras.
-        \item Integrated Spotify API for personalized music recommendations.
-    \end{itemize}}
 \end{itemize}
 \end{rSection}
 
@@ -106,7 +111,7 @@
 %	SKILLS SECTION
 %----------------------------------------------------------------------------------------
 \begin{rSection}{Skills}
-\begin{itemize}
+\begin{itemize}\setlength{\itemsep}{-2pt}
     \item {\bf Programming Languages:} Python, C/C++
     \item {\bf Web Technologies:} HTML, CSS
     \item {\bf Tools:} Git
