@@ -13,11 +13,10 @@
   </head>
   
   <body>
-    <a href="https://debjit.is-a.dev" class="gui-button"
-      >View GUI Version</a
-    >
+    <a href="https://debjit.is-a.dev" class="gui-button">View GUI Version</a>
 
-    <div class="terminal">
+    <!-- CLI Terminal Section -->
+    <div class="terminal" id="terminal">
       <div class="terminal-header">
         <div class="buttons">
           <span class="close"></span>
@@ -38,11 +37,121 @@
         </div>
       </div>
     </div>
+
+    <!-- Resume Section (Initially Hidden) -->
+    <div class="resume-section" id="resume-section" style="display: none;">
+      <div class="resume-content">
+        <h2>Debjit Mandal - Resume</h2>
+        <p>
+          <a href="https://mystichronicle.github.io/resume" target="_blank" class="download-link">
+            Download my Resume
+          </a>
+        </p>
+
+        <section>
+          <h3>Contact</h3>
+          <p>Email: mystichronicle@zohomail.in</p>
+          <p>Phone: (+91) 8335024039</p>
+          <p>Website: <a href="https://debjit.is-a.dev" target="_blank">debjit.is-a.dev</a></p>
+        </section>
+
+        <section>
+          <h3>Education</h3>
+          <p>
+            <strong>Kalinga Institute of Industrial Technology, Bhubaneswar, Odisha</strong><br />
+            B.Tech, Computer Science and Engineering (2022 - 2026)<br />
+            CGPA: 9.13/10
+          </p>
+        </section>
+
+        <section>
+          <h3>Experience</h3>
+          <p><strong>Campus Ambassador, IMUNA</strong> (July 2023 - August 2023)</p>
+          <ul>
+            <li>Promoted IMUN Online Conferences in different schools/universities and got 10+ registrations.</li>
+            <li>Awarded Best Intern for a week.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Projects</h3>
+          <ul>
+            <li>
+              <strong>NeuroSeg</strong>: A Deep Learning-based Brain Tumor Segmentation System.
+              <ul>
+                <li>Designed and trained a UNet-based deep learning model for automatic brain tumor segmentation from MRI images.</li>
+                <li>Developed a full-stack web application using Flask (backend) and HTML/CSS/JS (frontend) for real-time tumor detection.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>ECGShield</strong>: An interactive Streamlit-based system for ECG noise removal.
+              <ul>
+                <li>Implemented various signal filtering techniques including Notch Filter, High-Pass, Low-Pass, and Wavelet Denoising.</li>
+                <li>Designed a user-friendly Streamlit interface to upload ECG files, visualize signals, and download the cleaned output.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>MoodMelody</strong>: A Real-time emotion detection and content recommendation system.
+              <ul>
+                <li>Implemented emotion recognition using TensorFlow/Keras.</li>
+                <li>Integrated Spotify API for personalized music recommendations.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>DSH</strong>: A Command-Line shell made using C++.
+              <ul>
+                <li>Implemented custom command parsing for user-defined commands.</li>
+                <li>Handled concurrency with multithreading for running background processes.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>TrafficVisionAI</strong>: Real-Time Traffic Sign Recognition and Driver Assistance using AI.
+              <ul>
+                <li>Integrated traffic sign recognition using TensorFlow and OpenCV.</li>
+                <li>Developed lane detection and collision warning systems.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Patents</h3>
+          <p>
+            <strong>UK Design Patent – Autonomous Vehicle Predictive Steering Device</strong><br />
+            Design No. 6424920 (Registered on 20 February 2025; Granted on 07 March 2025)<br />
+            Co-held with MR. PRITAM CHAKRABORTY, MR. NILOTPAL BASU, and DR. ANJAN BANDYOPADHYAY.
+          </p>
+        </section>
+
+        <section>
+          <h3>Skills</h3>
+          <p>
+            Programming Languages: Python, C/C++<br />
+            Web Technologies: HTML, CSS<br />
+            Tools: Git<br />
+            Frameworks & Libraries: TensorFlow, OpenCV, scikit-learn, Pandas, NumPy<br />
+            Databases: SQLPlus
+          </p>
+        </section>
+        <button id="back-to-terminal">Back</button>
+      </div>
+    </div>
+
+    <!-- Projects Section (Initially Hidden) -->
+    <div class="projects-section" id="projects-section" style="display: none;">
+      <div class="projects-content">
+        <h2>Projects</h2>
+        <div id="projects-list">
+          <p>Loading projects...</p>
+        </div>
+        <button id="back-to-terminal-projects">Back</button>
+      </div>
+    </div>
+
     <div class="footer">
       <p>
         &copy; 2025
-        <a href="https://github.com/mystichronicle">Debjit Mandal</a>. All rights
-        reserved.
+        <a href="https://github.com/mystichronicle">Debjit Mandal</a>. All rights reserved.
       </p>
     </div>
     <script src="js/script.js"></script>

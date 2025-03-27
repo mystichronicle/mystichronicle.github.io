@@ -246,3 +246,87 @@ a:hover {
 .footer p {
   margin: 0;
 }
+
+/* Resume Section Styling */
+.resume-section {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  width: 80%;
+  max-width: 900px;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.resume-content h2,
+.resume-content h3 {
+  color: #4caf50;
+}
+
+.resume-content a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.resume-content a:hover {
+  text-decoration: underline;
+}
+
+.resume-content .download-link {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.resume-content button {
+  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  color: #f5f5f5;
+  padding: 8px 16px;
+  border: 2px solid #00bfff;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Projects Section Styling */
+.projects-section {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  width: 80%;
+  max-width: 900px;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.projects-content h2 {
+  color: #4caf50;
+}
+
+.project-item h3 {
+  color: #4caf50;
+}
+
+.project-item a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.project-item a:hover {
+  text-decoration: underline;
+}
+
+.projects-content button {
+  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  color: #f5f5f5;
+  padding: 8px 16px;
+  border: 2px solid #00bfff;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+}
