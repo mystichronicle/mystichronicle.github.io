@@ -278,6 +278,13 @@ a:hover {
 .resume-content .download-link {
   font-weight: bold;
   font-size: 16px;
+  color: #1e90ff;
+  text-decoration: underline;
+}
+
+.resume-content .download-link:hover {
+  color: #0b6fc6;
+  text-decoration: underline;
 }
 
 .resume-content button {
