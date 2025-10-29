@@ -7,23 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const commands = ['help', 'about', 'resume', 'projects', 'contact', 'clear'];
   let suggestions = [];
-  // Command history for ArrowUp/ArrowDown navigation
   const history = [];
-  let historyIndex = -1; // points to next position (history.length means new empty input)
+  let historyIndex = -1; 
   
     input.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
         const val = input.value;
         handleCommand(val);
-        // store non-empty commands in history
         if (val.trim() !== '') {
           history.push(val);
-          historyIndex = history.length; // reset index to after the last entry
+          historyIndex = history.length; 
         }
         input.value = '';
         suggestions = [];
       } else if (event.key === 'ArrowUp') {
-        // Navigate to previous command
         event.preventDefault();
         if (history.length === 0) return;
         if (historyIndex === -1) historyIndex = history.length;
@@ -32,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
           input.value = history[historyIndex];
         }
       } else if (event.key === 'ArrowDown') {
-        // Navigate to next command
         event.preventDefault();
         if (history.length === 0) return;
         if (historyIndex === -1) historyIndex = history.length;
@@ -40,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
           historyIndex += 1;
           input.value = history[historyIndex];
         } else {
-          // move to fresh empty input
           historyIndex = history.length;
           input.value = '';
         }
@@ -80,29 +75,25 @@ document.addEventListener('DOMContentLoaded', () => {
               <li>Facebook: <a href="https://www.facebook.com/mystichronicle" target="_blank">https://www.facebook.com/mystichronicle</a></li>
               <li>LinkedIn: <a href="https://www.linkedin.com/in/mystichronicle" target="_blank">https://www.linkedin.com/in/mystichronicle</a></li>
               <li>X: <a href="https://www.x.com/mystichronicle" target="_blank">https://www.x.com/mystichronicle</a></li>
-              <li>Threads: <a href="https://threads.net/@mystichronicle" target="_blank">https://threads.net/@mystichronicle</a></li>
+              <li>Mastodon: <a href="https://mastodon.social/@mystichronicle" target="_blank" rel="me">https://mastodon.social/@mystichronicle</a></li>
             </ul>
           `;
           break;
         
         
         case 'resume':
-          // Hide terminal and projects sections; show resume section
           terminal.style.display = 'none';
           projectsSection.style.display = 'none';
           resumeSection.style.display = 'block';
           response = `<p>Loading resume...</p>`;
           break;
         case 'projects':
-          // Hide terminal and resume sections; show projects section
           terminal.style.display = 'none';
           resumeSection.style.display = 'none';
           projectsSection.style.display = 'block';
-          // Display loading text in projects section
           const projectsList = document.getElementById('projects-list');
           projectsList.innerHTML = '<p>Loading projects...</p>';
           
-          // Fetch public repositories from GitHub sorted by creation date (latest to earliest)
           fetch('https://api.github.com/users/mystichronicle/repos?sort=created&direction=desc')
             .then(response => response.json())
             .then(data => {
@@ -110,9 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.length === 0) {
                   projectsList.innerHTML = '<p>No public repositories found.</p>';
                 } else {
-                  projectsList.innerHTML = ''; // Clear the loading message
+                  projectsList.innerHTML = ''; 
                   data.forEach(repo => {
-                    // Create a project item for each repository
                     const projectItem = document.createElement('div');
                     projectItem.className = 'project-item';
                     projectItem.innerHTML = `<h3>${repo.name}</h3>
@@ -167,17 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   
-    // Back button functionality for resume section
     document.getElementById('back-to-terminal').addEventListener('click', () => {
       resumeSection.style.display = 'none';
-      // Remove the inline display style so CSS (.terminal { display: flex }) applies
       terminal.style.display = '';
     });
   
-    // Back button functionality for projects section
     document.getElementById('back-to-terminal-projects').addEventListener('click', () => {
       projectsSection.style.display = 'none';
-      // Remove the inline display style so CSS (.terminal { display: flex }) applies
       terminal.style.display = '';
     });
   });
