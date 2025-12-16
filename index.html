@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Debjit Mandal - Computer Science student and Python developer specializing in data science and machine learning. Explore my projects, resume, and contact information." />
+    <meta name="keywords" content="Debjit Mandal, Computer Science, Python, Data Science, Machine Learning, KIIT, Portfolio" />
+    <meta name="author" content="Debjit Mandal" />
     <meta
       name="google-site-verification"
       content="tzQrQgyftz-ZVK9ahHIrYXIq7FBsGn31mWoykZ_lwvc"
@@ -13,37 +16,38 @@
   </head>
   
   <body>
-    <a href="https://debjit.is-a.dev" class="gui-button">View GUI Version</a>
+    <a href="https://debjit.is-a.dev" class="gui-button" target="_blank" rel="noopener noreferrer" aria-label="View GUI version of portfolio">View GUI Version</a>
 
     <!-- CLI Terminal Section -->
-    <div class="terminal" id="terminal">
+    <main class="terminal" id="terminal" role="main" aria-label="Terminal interface">
       <div class="terminal-header">
-        <div class="buttons">
-          <span class="close"></span>
-          <span class="minimize"></span>
-          <span class="maximize"></span>
+        <div class="buttons" role="presentation" aria-hidden="true">
+          <span class="close" aria-label="Close"></span>
+          <span class="minimize" aria-label="Minimize"></span>
+          <span class="maximize" aria-label="Maximize"></span>
         </div>
         <div class="title">~</div>
       </div>
       <div class="terminal-body" id="terminal-body">
-        <div class="output" id="output">
+        <div class="output" id="output" role="log" aria-live="polite" aria-atomic="false">
           <p>
             Welcome to My GitHub Page. Type 'help' to see available commands.
           </p>
         </div>
         <div class="input-line">
-          <span class="prompt">></span>
-          <input type="text" id="input" autofocus autocomplete="off" />
+          <span class="prompt" aria-hidden="true">></span>
+          <label for="input" class="sr-only">Terminal command input</label>
+          <input type="text" id="input" autofocus autocomplete="off" aria-label="Terminal command input" aria-describedby="output" />
         </div>
       </div>
-    </div>
+    </main>
 
     <!-- Resume Section (Initially Hidden) -->
-    <div class="resume-section" id="resume-section" style="display: none;">
+    <section class="resume-section" id="resume-section" style="display: none;" aria-label="Resume" role="region">
       <div class="resume-content">
         <h2>Debjit Mandal - Resume</h2>
         <p>
-          <a href="https://mystichronicle.github.io/resume" target="_blank" class="download-link">
+          <a href="https://mystichronicle.github.io/resume" target="_blank" rel="noopener noreferrer" class="download-link" aria-label="Download resume in new tab">
             Download my Resume
           </a>
         </p>
@@ -126,27 +130,27 @@
             Databases: SQLPlus
           </p>
         </section>
-        <button id="back-to-terminal">Back</button>
+        <button id="back-to-terminal" aria-label="Return to terminal">Back</button>
       </div>
-    </div>
+    </section>
 
     <!-- Projects Section (Initially Hidden) -->
-    <div class="projects-section" id="projects-section" style="display: none;">
+    <section class="projects-section" id="projects-section" style="display: none;" aria-label="Projects" role="region">
       <div class="projects-content">
         <h2>Projects</h2>
-        <div id="projects-list">
+        <div id="projects-list" role="list" aria-live="polite">
           <p>Loading projects...</p>
         </div>
-        <button id="back-to-terminal-projects">Back</button>
+        <button id="back-to-terminal-projects" aria-label="Return to terminal">Back</button>
       </div>
-    </div>
+    </section>
 
-    <div class="footer">
+    <footer class="footer">
       <p>
         &copy; 2025
-        <a href="https://github.com/mystichronicle">Debjit Mandal</a>. All rights reserved.
+        <a href="https://github.com/mystichronicle" target="_blank" rel="noopener noreferrer" aria-label="Visit Debjit Mandal's GitHub profile">Debjit Mandal</a>. All rights reserved.
       </p>
-    </div>
+    </footer>
     <script src="js/script.js"></script>
   </body>
 </html>

@@ -1,149 +1,254 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const input = document.getElementById('input');
-    const output = document.getElementById('output');
-    const terminal = document.getElementById('terminal');
-    const resumeSection = document.getElementById('resume-section');
-    const projectsSection = document.getElementById('projects-section');
+    // Constants
+    const CONFIG = {
+      githubUsername: 'mystichronicle',
+      githubApiUrl: 'https://api.github.com/users/',
+      displayStates: {
+        NONE: 'none',
+        BLOCK: 'block',
+        EMPTY: ''
+      },
+      focusDelay: 100
+    };
+    
+    // Cache DOM elements
+    const DOM = {
+      input: document.getElementById('input'),
+      output: document.getElementById('output'),
+      terminal: document.getElementById('terminal'),
+      resumeSection: document.getElementById('resume-section'),
+      projectsSection: document.getElementById('projects-section'),
+      projectsList: document.getElementById('projects-list'),
+      backToTerminalBtn: document.getElementById('back-to-terminal'),
+      backToTerminalProjectsBtn: document.getElementById('back-to-terminal-projects')
+    };
   
-  const commands = ['help', 'about', 'resume', 'projects', 'contact', 'clear'];
-  let suggestions = [];
-  const history = [];
-  let historyIndex = -1; 
-  
-    input.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        const val = input.value;
-        handleCommand(val);
-        if (val.trim() !== '') {
-          history.push(val);
-          historyIndex = history.length; 
-        }
-        input.value = '';
-        suggestions = [];
-      } else if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        if (history.length === 0) return;
-        if (historyIndex === -1) historyIndex = history.length;
-        if (historyIndex > 0) {
-          historyIndex -= 1;
-          input.value = history[historyIndex];
-        }
-      } else if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        if (history.length === 0) return;
-        if (historyIndex === -1) historyIndex = history.length;
-        if (historyIndex < history.length - 1) {
-          historyIndex += 1;
-          input.value = history[historyIndex];
+    // State
+    const state = {
+      commands: ['help', 'about', 'resume', 'projects', 'contact', 'clear'],
+      suggestions: [],
+      history: [],
+      historyIndex: -1 // -1 indicates we're not navigating history
+    };
+    
+    // Utility functions
+    const sanitizeHTML = (str) => {
+      const temp = document.createElement('div');
+      temp.textContent = str;
+      return temp.innerHTML;
+    };
+    
+    const showSection = (sectionToShow) => {
+      const sections = [DOM.terminal, DOM.resumeSection, DOM.projectsSection];
+      sections.forEach(section => {
+        section.style.display = section === sectionToShow ? CONFIG.displayStates.BLOCK : CONFIG.displayStates.NONE;
+      });
+      if (sectionToShow === DOM.terminal) {
+        restoreFocus();
+      }
+    };
+    
+    const restoreFocus = () => {
+      setTimeout(() => DOM.input.focus(), CONFIG.focusDelay);
+    }; 
+    
+    // Event handlers
+    const navigateHistory = (direction) => {
+      if (state.history.length === 0) return;
+      if (state.historyIndex === -1) state.historyIndex = state.history.length;
+      
+      if (direction === 'up' && state.historyIndex > 0) {
+        state.historyIndex -= 1;
+        DOM.input.value = state.history[state.historyIndex];
+      } else if (direction === 'down') {
+        if (state.historyIndex < state.history.length - 1) {
+          state.historyIndex += 1;
+          DOM.input.value = state.history[state.historyIndex];
         } else {
-          historyIndex = history.length;
-          input.value = '';
+          state.historyIndex = state.history.length;
+          DOM.input.value = '';
         }
-      } else if (event.key === 'Tab') {
-        event.preventDefault();
-        autoComplete();
-      } else {
-        showSuggestions(input.value);
+      }
+    };
+  
+    DOM.input.addEventListener('keydown', (event) => {
+      const keyHandlers = {
+        'Enter': () => {
+          const val = DOM.input.value;
+          handleCommand(val);
+          if (val.trim() !== '') {
+            state.history.push(val);
+            state.historyIndex = state.history.length;
+          }
+          DOM.input.value = '';
+          clearSuggestions();
+          state.suggestions = [];
+        },
+        'ArrowUp': () => {
+          event.preventDefault();
+          navigateHistory('up');
+        },
+        'ArrowDown': () => {
+          event.preventDefault();
+          navigateHistory('down');
+        },
+        'Tab': () => {
+          event.preventDefault();
+          autoComplete();
+        }
+      };
+      
+      if (keyHandlers[event.key]) {
+        keyHandlers[event.key]();
+      } else if (!event.ctrlKey && !event.metaKey && !event.altKey) {
+        setTimeout(() => showSuggestions(DOM.input.value), 0);
       }
     });
+    
+    // Command definitions
+    const commandHandlers = {
+      help: () => `
+        <p>Available commands:</p>
+        <ul>
+          <li>about - Display information about me</li>
+          <li>resume - Display my resume</li>
+          <li>projects - Display my projects</li>
+          <li>contact - Display contact information</li>
+          <li>clear - Clear the terminal</li>
+        </ul>
+      `,
+      
+      about: () => `<p>Hi, This is Debjit. I'm studying Computer Science at KIIT in Bhubaneswar. I work mostly with Python and I love Data Science. It's my privilege to share my interests, stories, and skills with you. I really hope you'll enjoy browsing my site and I'd love to hear your feedback.</p>`,
+      
+      contact: () => {
+        const links = [
+          { name: 'GitHub', url: `https://github.com/${CONFIG.githubUsername}` },
+          { name: 'LinkedIn', url: `https://www.linkedin.com/in/${CONFIG.githubUsername}` },
+          { name: 'X', url: `https://www.x.com/${CONFIG.githubUsername}` },
+          { name: 'Mastodon', url: `https://mastodon.social/@${CONFIG.githubUsername}`, rel: 'noopener noreferrer me' }
+        ];
+        
+        const linksList = links.map(link => 
+          `<li>${link.name}: <a href="${link.url}" target="_blank" rel="${link.rel || 'noopener noreferrer'}">${link.url}</a></li>`
+        ).join('');
+        
+        return `
+          <p>Contact Information:</p>
+          <ul>${linksList}</ul>
+        `;
+      },
+      
+      resume: () => {
+        showSection(DOM.resumeSection);
+        return `<p>Loading resume...</p>`;
+      },
+      
+      projects: () => {
+        showSection(DOM.projectsSection);
+        loadGitHubProjects();
+        return `<p>Loading projects...</p>`;
+      },
+      
+      clear: () => {
+        DOM.output.innerHTML = '';
+        return null; // Special case: no output
+      }
+    };
+    
+    const loadGitHubProjects = () => {
+      DOM.projectsList.innerHTML = '<p class="loading">Loading projects...</p>';
+      
+      const apiUrl = `${CONFIG.githubApiUrl}${CONFIG.githubUsername}/repos?sort=created&direction=desc`;
+      
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (!data || !Array.isArray(data)) {
+            DOM.projectsList.innerHTML = '<p>Error: Invalid data received from API.</p>';
+            return;
+          }
+          
+          if (data.length === 0) {
+            DOM.projectsList.innerHTML = '<p>No public repositories found.</p>';
+            return;
+          }
+          
+          DOM.projectsList.innerHTML = '';
+          data.forEach(repo => {
+            const projectItem = createProjectItem(repo);
+            DOM.projectsList.appendChild(projectItem);
+          });
+        })
+        .catch(error => {
+          console.error('Failed to fetch projects:', error);
+          const errorMsg = error.message.includes('status: 403')
+            ? 'GitHub API rate limit exceeded. Please try again later.'
+            : 'Failed to load projects. Please check your internet connection.';
+          DOM.projectsList.innerHTML = `<p>Error: ${sanitizeHTML(errorMsg)}</p>`;
+        });
+    };
+    
+    const createProjectItem = (repo) => {
+      const projectItem = document.createElement('div');
+      projectItem.className = 'project-item';
+      const repoName = sanitizeHTML(repo.name);
+      const repoDesc = repo.description ? sanitizeHTML(repo.description) : 'No description available';
+      const repoUrl = sanitizeHTML(repo.html_url);
+      
+      projectItem.innerHTML = `
+        <h3>${repoName}</h3>
+        <p>${repoDesc}</p>
+        <p><a href="${repoUrl}" target="_blank" rel="noopener noreferrer">View Project</a></p>
+      `;
+      
+      return projectItem;
+    };
+    
+    const addOutput = (command, response) => {
+      const newOutput = document.createElement('div');
+      newOutput.innerHTML = `<p class="command">> ${sanitizeHTML(command)}</p>${response}`;
+      DOM.output.appendChild(newOutput);
+      DOM.output.scrollTop = DOM.output.scrollHeight;
+    };
   
     function handleCommand(command) {
       const cmd = command.trim().toLowerCase();
-      let response = '';
-  
-      switch (cmd) {
-        case 'help':
-          response = `
-            <p>Available commands:</p>
-            <ul>
-              <li>about - Display information about me</li>
-              <li>resume - Display my resume</li>
-              <li>projects - Display my projects</li>
-              <li>contact - Display contact information</li>
-              <li>clear - Clear the terminal</li>
-            </ul>
-          `;
-          break;
-        case 'about':
-          response = `<p>Hi, This is Debjit. I'm studying Computer Science at KIIT in Bhubaneswar. I work mostly with Python and I love data science. When I'm not coding, I try small projects, read about new tech, or go to meetups to learn from others. I like learning by doing — if something's interesting, I jump in and build it.</p>`;
-          break;
-        case 'contact':
-          response = `
-            <p>Contact Information:</p>
-            <ul>
-              <li>GitHub: <a href="https://github.com/mystichronicle" target="_blank">https://github.com/mystichronicle</a></li>
-              <li>Facebook: <a href="https://www.facebook.com/mystichronicle" target="_blank">https://www.facebook.com/mystichronicle</a></li>
-              <li>LinkedIn: <a href="https://www.linkedin.com/in/mystichronicle" target="_blank">https://www.linkedin.com/in/mystichronicle</a></li>
-              <li>X: <a href="https://www.x.com/mystichronicle" target="_blank">https://www.x.com/mystichronicle</a></li>
-              <li>Mastodon: <a href="https://mastodon.social/@mystichronicle" target="_blank" rel="me">https://mastodon.social/@mystichronicle</a></li>
-            </ul>
-          `;
-          break;
-        
-        
-        case 'resume':
-          terminal.style.display = 'none';
-          projectsSection.style.display = 'none';
-          resumeSection.style.display = 'block';
-          response = `<p>Loading resume...</p>`;
-          break;
-        case 'projects':
-          terminal.style.display = 'none';
-          resumeSection.style.display = 'none';
-          projectsSection.style.display = 'block';
-          const projectsList = document.getElementById('projects-list');
-          projectsList.innerHTML = '<p>Loading projects...</p>';
-          
-          fetch('https://api.github.com/users/mystichronicle/repos?sort=created&direction=desc')
-            .then(response => response.json())
-            .then(data => {
-              if (data && Array.isArray(data)) {
-                if (data.length === 0) {
-                  projectsList.innerHTML = '<p>No public repositories found.</p>';
-                } else {
-                  projectsList.innerHTML = ''; 
-                  data.forEach(repo => {
-                    const projectItem = document.createElement('div');
-                    projectItem.className = 'project-item';
-                    projectItem.innerHTML = `<h3>${repo.name}</h3>
-                      <p>${repo.description ? repo.description : ''}</p>
-                      <p><a href="${repo.html_url}" target="_blank">View Project</a></p>`;
-                    projectsList.appendChild(projectItem);
-                  });
-                }
-              } else {
-                projectsList.innerHTML = '<p>Error loading projects.</p>';
-              }
-            })
-            .catch(error => {
-              console.error(error);
-              projectsList.innerHTML = '<p>Error loading projects.</p>';
-            });
-          response = `<p>Loading projects...</p>`;
-          break;
-        case 'clear':
-          output.innerHTML = '';
-          return;
-        default:
-          response = `<p>Command not found: ${command}</p>`;
-          break;
+      const handler = commandHandlers[cmd];
+      
+      if (handler) {
+        const response = handler();
+        if (response !== null) {
+          addOutput(command, response);
+        }
+      } else {
+        const response = `<p>Command not found: ${sanitizeHTML(command)}</p>`;
+        addOutput(command, response);
       }
-  
-      const newOutput = document.createElement('div');
-      newOutput.innerHTML = `<p class="command">> ${command}</p>${response}`;
-      output.appendChild(newOutput);
-      output.scrollTop = output.scrollHeight;
     }
   
     function showSuggestions(inputValue) {
-      const value = inputValue.trim().toLowerCase();
-      suggestions = commands.filter(cmd => cmd.startsWith(value));
-      const suggestionText = suggestions.length > 0 ? suggestions.join(' ') : '';
-      const suggestionElement = document.createElement('p');
-      suggestionElement.className = 'suggestion';
-      suggestionElement.textContent = suggestionText;
       clearSuggestions();
-      output.appendChild(suggestionElement);
+      const value = inputValue.trim().toLowerCase();
+      
+      if (value === '') {
+        state.suggestions = [];
+        return;
+      }
+      
+      state.suggestions = state.commands.filter(cmd => cmd.startsWith(value));
+      
+      if (state.suggestions.length > 0 && state.suggestions[0] !== value) {
+        const suggestionElement = document.createElement('p');
+        suggestionElement.className = 'suggestion';
+        suggestionElement.textContent = state.suggestions.join(', ');
+        suggestionElement.setAttribute('aria-live', 'polite');
+        DOM.output.appendChild(suggestionElement);
+      }
     }
   
     function clearSuggestions() {
@@ -152,19 +257,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     function autoComplete() {
-      if (suggestions.length === 1) {
-        input.value = suggestions[0];
+      if (state.suggestions.length === 1) {
+        DOM.input.value = state.suggestions[0];
+        clearSuggestions();
+        state.suggestions = [];
       }
     }
-  
-    document.getElementById('back-to-terminal').addEventListener('click', () => {
-      resumeSection.style.display = 'none';
-      terminal.style.display = '';
-    });
-  
-    document.getElementById('back-to-terminal-projects').addEventListener('click', () => {
-      projectsSection.style.display = 'none';
-      terminal.style.display = '';
-    });
+    
+    // Setup back button handlers
+    const setupBackButtons = () => {
+      DOM.backToTerminalBtn.addEventListener('click', () => showSection(DOM.terminal));
+      DOM.backToTerminalProjectsBtn.addEventListener('click', () => showSection(DOM.terminal));
+    };
+    
+    // Initialize
+    setupBackButtons();
   });
   
